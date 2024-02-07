@@ -1,0 +1,7 @@
+{
+  "quote-props": [
+    "error",
+    "as-needed",
+    { "keywords": true, "unnecessary": false, "numbers": true }
+  ]
+}

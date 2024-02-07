@@ -1,0 +1,38 @@
+.main {
+  display: flex;
+  /* margin: 0 10px; */
+  justify-content: space-between;
+  background-color: #3f3535;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.main button {
+  border: none;
+  background-color: #3f3535;
+  color: azure;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.main button:hover {
+  background-color: #2c2626;
+  color: #fff;
+}
+
+.main button:active {
+  transform: translateY(1px);
+}
