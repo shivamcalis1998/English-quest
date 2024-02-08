@@ -1,12 +1,12 @@
 .container {
-  max-width: 400px;
-  margin: 5% auto 5% auto;
+  max-width: 450px;
+  margin: 5% auto;
   padding: 14px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   position: static;
   max-height: 600px;
 }
@@ -18,18 +18,26 @@
   color: #333333;
 }
 
-.form {
-  margin-bottom: 0;
+.formGroup {
+  margin-bottom: 15px;
 }
 
 .label {
   display: block;
-  /* margin-bottom: 5px; */
+  margin-bottom: 5px;
   color: #555555;
   font-size: 16px;
 }
 
 .input {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.select {
   width: 100%;
   padding: 12px;
   border: 1px solid #cccccc;

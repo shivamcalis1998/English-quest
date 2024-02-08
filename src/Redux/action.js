@@ -74,12 +74,42 @@ export const getBooksData = (token) => async (dispatch) => {
   }
 };
 
-export const createBooksData = () => async (dispatch) => {
+export const createBooksData = (bookData, token) => async (dispatch) => {
   try {
     const postData = await axios.post(
-      `https://english-quest-back.onrender.com/books`
+      `https://english-quest-back.onrender.com/books`,
+      bookData,
+      {
+        headers: {
+          authentication: token,
+        },
+      }
     );
+
+    dispatch({
+      type: BOOKS_POST,
+      payload: { newBooks: postData.data.books },
+    });
   } catch (error) {
     console.log(error);
   }
+};
+
+export const deleteData = (token, id) => async (dispatch) => {
+  try {
+    const deleteData = await axios.delete(
+      `https://english-quest-back.onrender.com/books/${id}`,
+
+      {
+        headers: {
+          authentication: token,
+        },
+      }
+    );
+
+    dispatch({
+      type: BOOKS_DELETE,
+      payload: { id },
+    });
+  } catch (error) {}
 };

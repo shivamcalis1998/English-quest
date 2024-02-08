@@ -18,13 +18,13 @@ thead {
 
 th {
   padding: 10px;
-  text-align: left;
+  text-align: center;
   background-color: #746666;
 }
 
 td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ddd;
 }
 
@@ -46,6 +46,8 @@ tr:nth-child(odd) {
 
 /* Buttons */
 button {
+  margin-left: 5px;
+  margin-right: 5px;
   padding: 8px 12px;
   border: none;
   background-color: #007bff;

@@ -23,11 +23,13 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={token ? <Dashboard /> : <Navigate to="/login" />}
+            element={
+              token ? <Dashboard token={token} /> : <Navigate to="/login" />
+            }
           />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard token={token} />} />
-          <Route path="/createbooks" element={<CreateBooks />} />
+          <Route path="/createbooks" element={<CreateBooks token={token} />} />
         </Routes>
       </div>
     </Router>
