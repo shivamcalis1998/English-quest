@@ -1,17 +1,16 @@
 .main {
   display: flex;
-  /* margin: 0 10px; */
   justify-content: space-between;
   background-color: #3f3535;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   box-sizing: border-box;
   position: fixed;
   width: 100%;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   top: 0;
-  z-index: 999;
+  z-index: 20;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }

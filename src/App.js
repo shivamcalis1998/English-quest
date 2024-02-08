@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 
 import Dashboard from "./components/Dashboard/Dashboard";
+import CreateBooks from "./components/create books/CreateBooks";
 
 function App() {
   const token = useSelector((state) => state.token);
@@ -26,6 +27,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard token={token} />} />
+          <Route path="/createbooks" element={<CreateBooks />} />
         </Routes>
       </div>
     </Router>
