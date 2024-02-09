@@ -5,6 +5,7 @@ import {
   BOOKS_POST,
   BOOKS_PUT,
   BOOKS_DELETE,
+  LOGIN_FAIL,
 } from "./actionTypes";
 
 import axios from "axios";
@@ -48,6 +49,7 @@ export const logout = () => async (dispatch) => {
     });
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("userId");
   } catch (error) {
     console.log(error);
   }
@@ -55,9 +57,17 @@ export const logout = () => async (dispatch) => {
 
 export const getBooksData = (query, token) => async (dispatch) => {
   try {
-    const { language, sort } = query;
+    const { language, sort, category } = query;
+    let old = "";
+    let New = "";
+    if (category === "old") {
+      old = 1;
+    } else if (category === "New") {
+      New = 1;
+    }
+    console.log(category);
     const response = await axios.get(
-      `https://english-quest-back.onrender.com/books?language=${language}&sort=${sort}`,
+      `https://english-quest-back.onrender.com/books?language=${language}&sort=${sort}&old=${old}&New=${New}`,
       {
         headers: {
           "Content-Type": "application/json",

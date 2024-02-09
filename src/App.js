@@ -28,10 +28,11 @@ function App() {
               token ? <Dashboard token={token} /> : <Navigate to="/login" />
             }
           />
+          {token && (
+            <Route path="/dashboard" element={<Dashboard token={token} />} />
+          )}
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard token={token} />} />
           <Route path="/createbooks" element={<CreateBooks token={token} />} />
-          {/* <Route path="/editbooks" element={<EditBooks token={token} />} /> */}
         </Routes>
       </div>
     </Router>

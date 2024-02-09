@@ -11,15 +11,24 @@ const initialState = {
   token: localStorage.getItem("token") || null,
   role: localStorage.getItem("role") || null,
   books: null,
+  userId: localStorage.getItem("userId") || null,
+  errors: null,
 };
 
 const storeReducer = (store = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOGIN_SUCCESS:
-      return { ...store, token: payload.token, role: payload.role };
+      return {
+        ...store,
+        token: payload.token,
+        role: payload.role,
+        userId: payload.userId,
+        error: null,
+      };
+
     case LOGOUT_SUCCESS:
-      return { ...store, token: null, role: null };
+      return { ...store, token: null, role: null, userId: null, errors: null };
     case BOOKS_GET:
       return { ...store, books: payload.books };
     case BOOKS_POST:

@@ -5,15 +5,17 @@ import { deleteData, getBooksData } from "../../Redux/action";
 import EditBooks from "../edit books/EditBooks";
 
 const Dashboard = ({ token }) => {
-  const role = useSelector((state) => state.role);
+  const { role, books, userId } = useSelector((state) => state);
+  console.log(userId);
   const dispatch = useDispatch();
-  const books = useSelector((state) => state.books);
+
   const [show, setShow] = useState(false);
   const [booksd, setBooksD] = useState(null);
 
   const [query, setQuery] = useState({
     language: "",
     sort: "",
+    category: "",
   });
 
   const handleQuery = (e) => {
@@ -79,9 +81,9 @@ const Dashboard = ({ token }) => {
             <div>
               <select
                 id="sorting"
-                name="sorting"
-                // value={}
-                // onChange={}
+                name="category"
+                value={query.category}
+                onChange={handleQuery}
                 className="sortingSelect"
               >
                 <option value="">Select Sort By time</option>
@@ -121,7 +123,7 @@ const Dashboard = ({ token }) => {
                     )}
 
                     <td>
-                      {role === "CREATOR" ? (
+                      {role === "CREATOR" && book.userId === userId ? (
                         <>
                           <button onClick={() => HandleEditBooks(book)}>
                             Edit
