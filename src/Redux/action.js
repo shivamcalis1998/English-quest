@@ -97,7 +97,7 @@ export const createBooksData = (bookData, token) => async (dispatch) => {
 
 export const deleteData = (token, id) => async (dispatch) => {
   try {
-    const deleteData = await axios.delete(
+    await axios.delete(
       `https://english-quest-back.onrender.com/books/${id}`,
 
       {
@@ -111,5 +111,28 @@ export const deleteData = (token, id) => async (dispatch) => {
       type: BOOKS_DELETE,
       payload: { id },
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const editbooks = (token, id, updatedBooks) => async (dispatch) => {
+  try {
+    const editbooks = await axios.put(
+      `https://english-quest-back.onrender.com/books/${id}`,
+      updatedBooks,
+      {
+        headers: {
+          authentication: token,
+        },
+      }
+    );
+
+    dispatch({
+      type: BOOKS_PUT,
+      payload: { editbook: editbooks.data.books },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

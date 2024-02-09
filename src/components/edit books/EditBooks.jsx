@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import styles from "./CreateBooks.module.css"; // Import the CSS file
+import styles from "../create books/CreateBooks.module.css";
 import { useDispatch } from "react-redux";
-import { createBooksData } from "../../Redux/action";
-import { useNavigate } from "react-router-dom";
+import { editbooks } from "../../Redux/action";
 
-const CreateBooks = ({ token }) => {
+const EditBooks = ({ token, setShow, booksd }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    title: "",
-    author: "",
-    language: "",
-    rating: "",
+    title: booksd.title,
+    author: booksd.author,
+    language: booksd.language,
+    rating: booksd.rating,
   });
 
   const handleChange = (e) => {
@@ -23,12 +22,12 @@ const CreateBooks = ({ token }) => {
   };
 
   const handleClose = () => {
-    navigate("/dashboard");
+    setShow(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(createBooksData(formData, token));
+    await dispatch(editbooks(token, booksd._id, formData));
     console.log(formData);
     setFormData({
       title: "",
@@ -36,13 +35,13 @@ const CreateBooks = ({ token }) => {
       language: "",
       rating: "",
     });
-    navigate("/dashboard");
+    setShow(false);
   };
 
   return (
     <div className={styles.container}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h2 className={styles.heading}>Create Book</h2>
+        <h2 className={styles.heading}>Edit Book Data</h2>
         <button onClick={() => handleClose()} className={styles.closeBtn}>
           X
         </button>
@@ -79,7 +78,7 @@ const CreateBooks = ({ token }) => {
           <label htmlFor="language" className={styles.label}>
             Language:
           </label>
-          {/* Select tag for language with options */}
+
           <select
             id="language"
             name="language"
@@ -118,12 +117,16 @@ const CreateBooks = ({ token }) => {
             <option value="5">5</option>
           </select>
         </div>
-        <button type="submit" className={styles.submitButton}>
-          Submit
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className={styles.submitButton}
+        >
+          Save Changes
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateBooks;
+export default EditBooks;

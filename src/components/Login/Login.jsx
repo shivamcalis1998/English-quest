@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { login, signup } from "../../Redux/action";
 
 const Login = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [userData, setUserData] = useState({
     email: "",
     password: "",

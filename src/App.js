@@ -12,6 +12,7 @@ import {
 
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateBooks from "./components/create books/CreateBooks";
+import EditBooks from "./components/edit books/EditBooks";
 
 function App() {
   const token = useSelector((state) => state.token);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard token={token} />} />
           <Route path="/createbooks" element={<CreateBooks token={token} />} />
+          {/* <Route path="/editbooks" element={<EditBooks token={token} />} /> */}
         </Routes>
       </div>
     </Router>
