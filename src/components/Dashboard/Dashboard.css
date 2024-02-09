@@ -93,3 +93,40 @@ button:hover {
     align-items: center;
   }
 }
+
+.selectContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectContainer div {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.selectContainer select {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+.selectContainer select:focus {
+  outline: none;
+  border-color: #5c87d6;
+  box-shadow: 0 0 5px rgba(92, 135, 214, 0.5);
+}
+
+.selectContainer select:hover {
+  background-color: #e0e0e0;
+}
+
+.selectContainer option {
+  background-color: #fff;
+  color: #333;
+}

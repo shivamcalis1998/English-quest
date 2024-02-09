@@ -79,7 +79,6 @@ const CreateBooks = ({ token }) => {
           <label htmlFor="language" className={styles.label}>
             Language:
           </label>
-          {/* Select tag for language with options */}
           <select
             id="language"
             name="language"

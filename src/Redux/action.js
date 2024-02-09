@@ -53,10 +53,11 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const getBooksData = (token) => async (dispatch) => {
+export const getBooksData = (query, token) => async (dispatch) => {
   try {
+    const { language, sort } = query;
     const response = await axios.get(
-      `https://english-quest-back.onrender.com/books`,
+      `https://english-quest-back.onrender.com/books?language=${language}&sort=${sort}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +65,7 @@ export const getBooksData = (token) => async (dispatch) => {
         },
       }
     );
-
+    console.log(response);
     dispatch({
       type: BOOKS_GET,
       payload: { books: response.data.books },
@@ -88,7 +89,7 @@ export const createBooksData = (bookData, token) => async (dispatch) => {
 
     dispatch({
       type: BOOKS_POST,
-      payload: { newBooks: postData.data.books },
+      payload: { newBooks: postData.data.book },
     });
   } catch (error) {
     console.log(error);
@@ -130,7 +131,7 @@ export const editbooks = (token, id, updatedBooks) => async (dispatch) => {
 
     dispatch({
       type: BOOKS_PUT,
-      payload: { editbook: editbooks.data.books },
+      payload: { editbook: editbooks.data.book },
     });
   } catch (error) {
     console.log(error);

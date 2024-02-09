@@ -11,9 +11,19 @@ const Dashboard = ({ token }) => {
   const [show, setShow] = useState(false);
   const [booksd, setBooksD] = useState(null);
 
+  const [query, setQuery] = useState({
+    language: "",
+    sort: "",
+  });
+
+  const handleQuery = (e) => {
+    const { name, value } = e.target;
+    setQuery({ ...query, [name]: value });
+  };
+
   useEffect(() => {
-    dispatch(getBooksData(token));
-  }, [dispatch, token]);
+    dispatch(getBooksData(query, token));
+  }, [dispatch, token, query]);
 
   console.log(books);
 
@@ -33,6 +43,54 @@ const Dashboard = ({ token }) => {
       ) : (
         <div className="maindiv">
           <h2>Books</h2>
+          <div className="selectContainer">
+            <div>
+              <select
+                id="language"
+                name="language"
+                value={query.language}
+                onChange={handleQuery}
+                className="languageSelect"
+              >
+                <option value="">Select Language</option>
+                <option value="hindi">Hindi</option>
+                <option value="english">English</option>
+                <option value="italian">Italian</option>
+                <option value="russian">Russian</option>
+                <option value="sanskrit">Sanskrit</option>
+                <option value="urdu">Urdu</option>
+                <option value="germen">Germen</option>
+                <option value="marwadi">Marwadi</option>
+              </select>
+            </div>
+            <div>
+              <select
+                id="sort"
+                name="sort"
+                value={query.sort}
+                onChange={handleQuery}
+                className="sortTimeSelect"
+              >
+                <option value="">Select Sort</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+              </select>
+            </div>
+            <div>
+              <select
+                id="sorting"
+                name="sorting"
+                // value={}
+                // onChange={}
+                className="sortingSelect"
+              >
+                <option value="">Select Sort By time</option>
+                <option value="old">Old</option>
+                <option value="New">New</option>
+              </select>
+            </div>
+          </div>
+
           {books && books.length > 0 ? (
             <table>
               <thead>
