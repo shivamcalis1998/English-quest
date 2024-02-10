@@ -12,7 +12,7 @@ const CreateBooks = ({ token }) => {
     author: "",
     language: "",
     rating: "",
-    image: null,
+    // image: null,
   });
 
   const handleChange = (e) => {
@@ -23,12 +23,12 @@ const CreateBooks = ({ token }) => {
     });
   };
 
-  const handleImageChange = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0], // Save the selected image file
-    });
-  };
+  // const handleImageChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     image: e.target.files[0], // Save the selected image file
+  //   });
+  // };
 
   const handleClose = () => {
     navigate("/dashboard");
@@ -36,15 +36,7 @@ const CreateBooks = ({ token }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSend = new FormData();
-    formDataToSend.append("title", formData.title);
-    formDataToSend.append("author", formData.author);
-    formDataToSend.append("language", formData.language);
-    formDataToSend.append("rating", formData.rating);
-    formDataToSend.append("image", formData.image);
-
-    await dispatch(createBooksData(formDataToSend, token));
-
+    await dispatch(createBooksData(formData, token));
     console.log(formData);
     setFormData({
       title: "",
@@ -133,7 +125,7 @@ const CreateBooks = ({ token }) => {
             <option value="5">5</option>
           </select>
         </div>
-        <div className={styles.formGroup}>
+        {/* <div className={styles.formGroup}>
           <label htmlFor="image" className={styles.label}>
             Image:
           </label>
@@ -144,7 +136,7 @@ const CreateBooks = ({ token }) => {
             onChange={handleImageChange}
             className={styles.input}
           />
-        </div>
+        </div> */}
         <button type="submit" className={styles.submitButton}>
           Submit
         </button>

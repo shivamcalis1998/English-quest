@@ -142,7 +142,6 @@ const Dashboard = ({ token }) => {
               <thead>
                 <tr>
                   <th>Title</th>
-                  <th>Image</th>
                   <th>Language</th>
                   <th>Author</th>
                   <th>Rating</th>
@@ -154,11 +153,7 @@ const Dashboard = ({ token }) => {
                 {books?.map((book) => (
                   <tr key={book?._id}>
                     <td>{book?.title}</td>
-                    <td>
-                      {book?.image && (
-                        <img src={book?.image} alt={book?.title} />
-                      )}
-                    </td>
+
                     <td>{book?.language}</td>
                     <td>{book?.author}</td>
                     <td>{book?.rating}</td>
