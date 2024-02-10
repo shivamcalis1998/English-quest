@@ -104,6 +104,19 @@ const Dashboard = ({ token }) => {
                 className="searchInput"
               />
             </div>
+            <div>
+              <select
+                id="sorting"
+                name="sort"
+                value={query.sort}
+                onChange={handleQuery}
+                className="sortingSelect"
+              >
+                <option value="">Sort by Rating</option>
+                <option value="rating_asc">Ascending</option>
+                <option value="rating_desc">Descending</option>
+              </select>
+            </div>
 
             {role === "CREATOR" ? (
               <div>
@@ -129,6 +142,7 @@ const Dashboard = ({ token }) => {
               <thead>
                 <tr>
                   <th>Title</th>
+                  <th>Image</th>
                   <th>Language</th>
                   <th>Author</th>
                   <th>Rating</th>
@@ -140,6 +154,11 @@ const Dashboard = ({ token }) => {
                 {books?.map((book) => (
                   <tr key={book?._id}>
                     <td>{book?.title}</td>
+                    <td>
+                      {book?.image && (
+                        <img src={book?.image} alt={book?.title} />
+                      )}
+                    </td>
                     <td>{book?.language}</td>
                     <td>{book?.author}</td>
                     <td>{book?.rating}</td>

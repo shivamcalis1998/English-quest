@@ -57,7 +57,7 @@ export const logout = () => async (dispatch) => {
 
 export const getBooksData = (query, token) => async (dispatch) => {
   try {
-    const { language, sort, category, userId, search } = query;
+    const { language, sort, category, userId, search, sortD } = query;
     let old = "";
     let New = "";
     if (category === "old") {
@@ -67,7 +67,7 @@ export const getBooksData = (query, token) => async (dispatch) => {
     }
     console.log(category);
     const response = await axios.get(
-      `https://english-quest-back.onrender.com/books?language=${language}&sort=${sort}&old=${old}&New=${New}&userId=${userId}&search=${search}`,
+      `https://english-quest-back.onrender.com/books?language=${language}&sort=${sort}&sortD=${sortD}&old=${old}&New=${New}&userId=${userId}&search=${search}`,
       {
         headers: {
           "Content-Type": "application/json",
