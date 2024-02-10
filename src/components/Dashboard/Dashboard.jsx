@@ -16,6 +16,8 @@ const Dashboard = ({ token }) => {
     language: "",
     sort: "",
     category: "",
+    userId: "",
+    search: "",
   });
 
   const handleQuery = (e) => {
@@ -91,6 +93,35 @@ const Dashboard = ({ token }) => {
                 <option value="New">New</option>
               </select>
             </div>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Search by title"
+                name="search"
+                value={query.search}
+                onChange={handleQuery}
+                className="searchInput"
+              />
+            </div>
+
+            {role === "CREATOR" ? (
+              <div>
+                <select
+                  id="filter"
+                  name="userId"
+                  value={query.userId}
+                  onChange={handleQuery}
+                  className="sortingSelect"
+                >
+                  <option value="">filter Data by creator</option>
+
+                  <option value={userId}>My Data</option>
+                </select>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
           {books && books.length > 0 ? (

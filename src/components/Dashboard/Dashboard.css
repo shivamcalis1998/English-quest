@@ -130,3 +130,13 @@ button:hover {
   background-color: #fff;
   color: #333;
 }
+
+.searchInput {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  color: #333;
+}
