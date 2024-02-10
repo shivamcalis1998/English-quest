@@ -12,7 +12,6 @@ import {
 
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateBooks from "./components/create books/CreateBooks";
-import EditBooks from "./components/edit books/EditBooks";
 
 function App() {
   const token = useSelector((state) => state.token);

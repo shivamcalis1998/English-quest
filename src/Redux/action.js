@@ -85,13 +85,14 @@ export const getBooksData = (query, token) => async (dispatch) => {
   }
 };
 
-export const createBooksData = (bookData, token) => async (dispatch) => {
+export const createBooksData = (formDataToSend, token) => async (dispatch) => {
   try {
     const postData = await axios.post(
       `https://english-quest-back.onrender.com/books`,
-      bookData,
+      formDataToSend,
       {
         headers: {
+          "Content-Type": "multipart/form-data",
           authentication: token,
         },
       }

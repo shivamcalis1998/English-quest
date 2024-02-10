@@ -142,6 +142,7 @@ const Dashboard = ({ token }) => {
               <thead>
                 <tr>
                   <th>Title</th>
+                  <th>image</th>
                   <th>Language</th>
                   <th>Author</th>
                   <th>Rating</th>
@@ -153,7 +154,13 @@ const Dashboard = ({ token }) => {
                 {books?.map((book) => (
                   <tr key={book?._id}>
                     <td>{book?.title}</td>
-
+                    <td>
+                      <img
+                        src={`https://english-quest-back.onrender.com/uploads/${book?.image}`}
+                        alt={book?.title}
+                        style={{ maxWidth: "100px" }}
+                      />
+                    </td>
                     <td>{book?.language}</td>
                     <td>{book?.author}</td>
                     <td>{book?.rating}</td>
