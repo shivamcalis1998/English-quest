@@ -12,7 +12,6 @@ const CreateBooks = ({ token }) => {
     author: "",
     language: "",
     rating: "",
-    image: null,
   });
 
   const handleChange = (e) => {
@@ -27,12 +26,12 @@ const CreateBooks = ({ token }) => {
     console.log(formData); // This will log the updated state
   }, [formData]);
 
-  const handleImageChange = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
-  };
+  // const handleImageChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     image: e.target.files[0],
+  //   });
+  // };
 
   const handleClose = () => {
     navigate("/dashboard");
@@ -40,20 +39,19 @@ const CreateBooks = ({ token }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSend = new FormData();
-    formDataToSend.append("title", formData.title);
-    formDataToSend.append("author", formData.author);
-    formDataToSend.append("language", formData.language);
-    formDataToSend.append("rating", formData.rating);
-    formDataToSend.append("image", formData.image);
-    await dispatch(createBooksData(formDataToSend, token));
+    // const formDataToSend = new FormData();
+    // formDataToSend.append("title", formData.title);
+    // formDataToSend.append("author", formData.author);
+    // formDataToSend.append("language", formData.language);
+    // formDataToSend.append("rating", formData.rating);
+    // // formDataToSend.append("image", formData.image);
+    await dispatch(createBooksData(formData, token));
 
     setFormData({
       title: "",
       author: "",
       language: "",
       rating: "",
-      image: null,
     });
     navigate("/dashboard");
   };
@@ -136,7 +134,7 @@ const CreateBooks = ({ token }) => {
             <option value="5">5</option>
           </select>
         </div>
-        <div className={styles.formGroup}>
+        {/* <div className={styles.formGroup}>
           <label htmlFor="image" className={styles.label}>
             Image:
           </label>
@@ -148,7 +146,7 @@ const CreateBooks = ({ token }) => {
             onChange={handleImageChange}
             className={styles.input}
           />
-        </div>
+        </div> */}
         <button type="submit" className={styles.submitButton}>
           Submit
         </button>

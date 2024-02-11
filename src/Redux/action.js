@@ -92,7 +92,7 @@ export const createBooksData = (formDataToSend, token) => async (dispatch) => {
       formDataToSend,
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          // "Content-Type": "multipart/form-data",
           authentication: token,
         },
       }
